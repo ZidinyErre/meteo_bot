@@ -1,10 +1,13 @@
 from selenium import webdriver
+from selenium.webdriver.common.by import By
 
 # With Selenium i can use a webdriver to read a webpage in different navigator
 driver = webdriver.Chrome()
 driver.get("https://meteofrance.com/previsions-meteo-france/montpellier/34000")
 
-element = driver.find_element(By.CSS_SELECTOR, ".weather_temp")
-scd_element = driver.find_element(By.TAG_NAME, "p")
+element = driver.find_element(By.CSS_SELECTOR,".weather_temp")
+scd_element = element.find_element(By.TAG_NAME, "p")
 
-print(element.scd_element)
+print(scd_element)
+
+driver.quit()
