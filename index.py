@@ -21,10 +21,13 @@ temperature = element.find_element(By.TAG_NAME, "p").text
 # To Have the "soirée" part i can make a if time_element variable by tag_name p = "Soirée" then tell me (temp , weather)
 time_element = driver.find_element(By.CSS_SELECTOR, ".period").text
 
+# I need to take the title or the alt of the img in .weather_temp
+temp_img = element.find_element(By.TAG_NAME, "img").get_attribute("title")
+
 print(temperature)
 print(time_element)
+print(temp_img)
 
-# I need to take the title or the alt of the img in .weather_temp
 # I need to understand how wind information wroks and take the information
 
 
