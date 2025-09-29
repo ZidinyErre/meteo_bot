@@ -19,6 +19,7 @@ driver.get("https://meteofrance.com/previsions-meteo-france/montpellier/34000")
 wind_dict ={ "N": {"name": "Nord" , "description" : " Froid, sec en hiver. "},"NE": {"name": "Nord-Est" , "description" : " Froid et sec (continental). "},"E": {"name": " Est " , "description" : " Sec, parfois froid (continental). "},"SE": {"name": " Sud-Est " , "description" : " Chaud, humide (méditerranéen). "},"S": {"name": " Sud " , "description" : " Chaud, humide. "},"SO": {"name": " Sud-Ouest " , "description" : " Doux, humide (océanique). "},"O": {"name": " Ouest " , "description" : " Humide, perturbé (océanique). "},"NO": {"name": " Nord-Ouest " , "description" : " Frais, humide (océanique). "},  
 "NNE": {"name": " Nord-Nord-Est " , "description" : " Froid, sec. "},"ENE": {"name": " Est-Nord-Est " , "description" : " Sec, frais. "},"ESE": {"name": " Est-Sud-Est " , "description" : "Doux, sec/humide selon saison. "},"SSE": {"name": " Sud-Sud-Est " , "description" : " Chaud, humide. "},"SSO": {"name": " Sud-Sud-Ouest " , "description" : "  Doux, humide. "},"OSO": {"name": " Ouest-Sud-Ouest " , "description" : " Doux, humide, perturbé. "},"ONO": {"name": " Ouest-Nord-Ouest " , "description" : " Frais, humide. "},"NNO": {"name": " Nord-Nord-Ouest " , "description" : " Frais, humide, souvent instable. "},}
 
+#  Maybe the dict is not good for the function beaufort_from_speed
 beaufort_dict = {
     0: {"name": "Calme", "speed": (0, 0), "effect": "La fumée monte verticalement, pas de vent."},
     1: {"name": "Brise légère", "speed": (1, 19), "effect": "Les feuilles bougent, drapeaux se lèvent légèrement."},
@@ -36,7 +37,9 @@ beaufort_dict = {
 }
 
 # I need to make a function who take the speed of the wind and output the name and the effect
-# def beaufort_from_speed() :
+# 
+# def beaufort_from_speed(the_speed):
+    
 
 
 # | Force | Nom court                        | Vitesse (km/h) | Effet observé                                             |
