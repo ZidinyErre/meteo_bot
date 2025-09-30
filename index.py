@@ -23,15 +23,9 @@ wind_dict ={ "N": {"name": "Nord" , "description" : " Froid, sec en hiver. "},"N
 beaufort_dict = {
     0: {"name": "Calme", "speed": (0, 0), "effect": "La fumée monte verticalement, pas de vent."},
     1: {"name": "Brise légère", "speed": (1, 19), "effect": "Les feuilles bougent, drapeaux se lèvent légèrement."},
-    2: {"name": "Brise légère", "speed": (1, 19), "effect": "Les feuilles bougent, drapeaux se lèvent légèrement."},
-    3: {"name": "Brise légère", "speed": (1, 19), "effect": "Les feuilles bougent, drapeaux se lèvent légèrement."},
     4: {"name": "Jolie brise / Bonne brise", "speed": (20, 38), "effect": "Branches bougent, vagues légères."},
-    5: {"name": "Jolie brise / Bonne brise", "speed": (20, 38), "effect": "Branches bougent, vagues légères."},
     6: {"name": "Vent frais / Grand frais", "speed": (39, 61), "effect": "Arbres bougent, marche contre le vent perceptible."},
-    7: {"name": "Vent frais / Grand frais", "speed": (39, 61), "effect": "Arbres bougent, marche contre le vent perceptible."},
     8: {"name": "Coup de vent / Fort coup de vent", "speed": (62, 88), "effect": "Arbres secoués, vagues importantes, difficile de marcher."},
-    9: {"name": "Coup de vent / Fort coup de vent", "speed": (62, 88), "effect": "Arbres secoués, vagues importantes, difficile de marcher."},
-    10: {"name": "Tempête / Forte tempête", "speed": (89, 117), "effect": "Gros arbres bougent, dommages possibles, mer agitée."},
     11: {"name": "Tempête / Forte tempête", "speed": (89, 117), "effect": "Gros arbres bougent, dommages possibles, mer agitée."},
     12: {"name": "Ouragan", "speed": (118), "effect": "Dégâts généralisés, vents très violents."},
 }
@@ -39,6 +33,11 @@ beaufort_dict = {
 # I need to make a function who take the speed of the wind and output the name and the effect
 # 
 # def beaufort_from_speed(the_speed):
+# Je prends the_speed 
+# si the_speed et compris entre 1 et 19 print beaufort_dict[1].name beaufort_dict[1].effect
+# si the_speed et compris entre etc print 
+# si the_speed et compris entre 118 ou plus print 
+# sinon print beaufort_dict[0].name et effect
     
 
 
