@@ -17,7 +17,13 @@ driver.get("https://meteofrance.com/previsions-meteo-france/montpellier/34000")
 # I  make two arrays  to store the wind direction and is speed 
 
 wind_dict ={ "N": {"name": "Nord" , "description" : " Froid, sec en hiver. "},"NE": {"name": "Nord-Est" , "description" : " Froid et sec (continental). "},"E": {"name": " Est " , "description" : " Sec, parfois froid (continental). "},"SE": {"name": " Sud-Est " , "description" : " Chaud, humide (méditerranéen). "},"S": {"name": " Sud " , "description" : " Chaud, humide. "},"SO": {"name": " Sud-Ouest " , "description" : " Doux, humide (océanique). "},"O": {"name": " Ouest " , "description" : " Humide, perturbé (océanique). "},"NO": {"name": " Nord-Ouest " , "description" : " Frais, humide (océanique). "},  
-"NNE": {"name": " Nord-Nord-Est " , "description" : " Froid, sec. "},"ENE": {"name": " Est-Nord-Est " , "description" : " Sec, frais. "},"ESE": {"name": " Est-Sud-Est " , "description" : "Doux, sec/humide selon saison. "},"SSE": {"name": " Sud-Sud-Est " , "description" : " Chaud, humide. "},"SSO": {"name": " Sud-Sud-Ouest " , "description" : "  Doux, humide. "},"OSO": {"name": " Ouest-Sud-Ouest " , "description" : " Doux, humide, perturbé. "},"ONO": {"name": " Ouest-Nord-Ouest " , "description" : " Frais, humide. "},"NNO": {"name": " Nord-Nord-Ouest " , "description" : " Frais, humide, souvent instable. "},}
+"NNE": {"name": " Nord-Nord-Est " , "description" : " Froid, sec. "},"ENE": {"name": " Est-Nord-Est " , "description" : " Sec, frais. "},"ESE": {"name": " Est-Sud-Est " , "description" : "Doux, sec/humide selon saison. "},"SSE": {"name": " Sud-Sud-Est " , "description" : " Chaud, humide. "},"SSO": {"name": " Sud-Sud-Ouest " , "description" : "  Doux, humide. "},"OSO": {"name": " Ouest-Sud-Ouest " , "description" : " Doux, humide, perturbé. "},"ONO": {"name": " Ouest-Nord-Ouest " , "description" : " Frais, humide. "},"NNO": {"name": " Nord-Nord-Ouest " , "description" : " Frais, humide, souvent instable. "}}
+
+
+def compass(the_wind_direction):
+    for x in wind_dict:
+        if x == the_wind_direction:
+            print("Vent", " ", wind_dict[x]["name"], "/", wind_dict[x]["description"])
 
 beaufort_dict = {
     0: {"name": "Calme", "speed": (0, 0), "effect": "La fumée monte verticalement, pas de vent."},
@@ -52,8 +58,6 @@ def beaufort_from_speed(the_speed):
     else: 
         print(beaufort_dict[0]["name"] ,".", beaufort_dict[10]["effect"])
 
-
-
     
 
 
@@ -82,6 +86,8 @@ temp_img = element.find_element(By.TAG_NAME, "img").get_attribute("title")
 wind = driver.find_element(By.CSS_SELECTOR,".wind")
 wind_arrow = wind.find_element(By.TAG_NAME, "img").get_attribute("title")
 wind_speed = wind.find_element(By.TAG_NAME, "strong").text 
+# I split the wind to only have the wind direction 
+wind_arrow_split = wind_arrow.split()
 
 
 
@@ -92,6 +98,7 @@ print(temp_img)
 print(wind_arrow)
 print(wind_speed, "Km/h")
 beaufort_from_speed(int(wind_speed))
+compass(wind_arrow_split[1])
 
 
 # I need to find how i can send data to my phone by is number 
