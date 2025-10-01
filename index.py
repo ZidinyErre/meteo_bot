@@ -19,7 +19,6 @@ driver.get("https://meteofrance.com/previsions-meteo-france/montpellier/34000")
 wind_dict ={ "N": {"name": "Nord" , "description" : " Froid, sec en hiver. "},"NE": {"name": "Nord-Est" , "description" : " Froid et sec (continental). "},"E": {"name": " Est " , "description" : " Sec, parfois froid (continental). "},"SE": {"name": " Sud-Est " , "description" : " Chaud, humide (méditerranéen). "},"S": {"name": " Sud " , "description" : " Chaud, humide. "},"SO": {"name": " Sud-Ouest " , "description" : " Doux, humide (océanique). "},"O": {"name": " Ouest " , "description" : " Humide, perturbé (océanique). "},"NO": {"name": " Nord-Ouest " , "description" : " Frais, humide (océanique). "},  
 "NNE": {"name": " Nord-Nord-Est " , "description" : " Froid, sec. "},"ENE": {"name": " Est-Nord-Est " , "description" : " Sec, frais. "},"ESE": {"name": " Est-Sud-Est " , "description" : "Doux, sec/humide selon saison. "},"SSE": {"name": " Sud-Sud-Est " , "description" : " Chaud, humide. "},"SSO": {"name": " Sud-Sud-Ouest " , "description" : "  Doux, humide. "},"OSO": {"name": " Ouest-Sud-Ouest " , "description" : " Doux, humide, perturbé. "},"ONO": {"name": " Ouest-Nord-Ouest " , "description" : " Frais, humide. "},"NNO": {"name": " Nord-Nord-Ouest " , "description" : " Frais, humide, souvent instable. "},}
 
-#  Maybe the dict is not good for the function beaufort_from_speed
 beaufort_dict = {
     0: {"name": "Calme", "speed": (0, 0), "effect": "La fumée monte verticalement, pas de vent."},
     1: {"name": "Brise légère", "speed": (1, 19), "effect": "Les feuilles bougent, drapeaux se lèvent légèrement."},
@@ -31,13 +30,30 @@ beaufort_dict = {
 }
 
 # I need to make a function who take the speed of the wind and output the name and the effect
-# 
-# def beaufort_from_speed(the_speed):
-# Je prends the_speed 
-# si the_speed et compris entre 1 et 19 print beaufort_dict[1].name beaufort_dict[1].effect
-# si the_speed et compris entre etc print 
-# si the_speed et compris entre 118 ou plus print 
-# sinon print beaufort_dict[0].name et effect
+def beaufort_from_speed(the_speed):
+    if the_speed >= 1 or the_speed <= 19 : 
+        print(beaufort_dict[1]["name"] , ".", beaufort_dict[1]["effect"])
+
+    elif the_speed >= 20 or the_speed  <= 38: 
+        print(beaufort_dict[4]["name"] ,".", beaufort_dict[4]["effect"])
+
+    elif the_speed >= 39 or the_speed <= 61:  
+        print(beaufort_dict[6]["name"] ,".", beaufort_dict[6]["effect"])
+
+    elif the_speed >= 62 or the_speed <= 88 : 
+        print(beaufort_dict[8]["name"] ,".", beaufort_dict[8]["effect"])
+
+    elif the_speed >= 89 or the_speed <= 117: 
+        print(beaufort_dict[11]["name"] ,".", beaufort_dict[11]["effect"])
+
+    elif the_speed >= 118: 
+        print(beaufort_dict[12]["name"] ,".", beaufort_dict[12]["effect"])
+
+    else: 
+        print(beaufort_dict[0]["name"] ,".", beaufort_dict[10]["effect"])
+
+
+
     
 
 
@@ -75,6 +91,7 @@ print(time_element)
 print(temp_img)
 print(wind_arrow)
 print(wind_speed, "Km/h")
+beaufort_from_speed(int(wind_speed))
 
 
 # I need to find how i can send data to my phone by is number 
