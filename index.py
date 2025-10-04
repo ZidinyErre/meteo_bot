@@ -1,6 +1,14 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
+import os 
+from dotenv import load_dotenv
+
+load_dotenv()
+
+test_key = os.getenv("TEST")
+
+print(test_key)
 
 # With Selenium i can use a webdriver to read a webpage in different navigator
 
@@ -101,8 +109,7 @@ beaufort_from_speed(int(wind_speed))
 compass(wind_arrow_split[1])
 
 
-# I need to find how i can send data to my phone by is number 
-
+# I need to find how i can send data to my mail
 
 driver.quit()
 
