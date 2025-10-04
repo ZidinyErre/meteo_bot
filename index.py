@@ -8,9 +8,11 @@ load_dotenv()
 
 test_key = os.getenv("TEST")
 test_key_2 = os.getenv("TEST_2")
+test_key_3 = os.getenv("TEST_3")
 
 print(test_key)
 print(test_key_2)
+print(test_key_3)
 
 # With Selenium i can use a webdriver to read a webpage in different navigator
 
