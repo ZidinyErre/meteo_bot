@@ -23,7 +23,7 @@ wind_dict ={ "N": {"name": "Nord" , "description" : " Froid, sec en hiver. "},"N
 def compass(the_wind_direction):
     for x in wind_dict:
         if x == the_wind_direction:
-            print("Vent", " ", wind_dict[x]["name"], "/", wind_dict[x]["description"])
+            print("Vent" , wind_dict[x]["name"], "/", wind_dict[x]["description"]) 
 
 beaufort_dict = {
     0: {"name": "Calme", "speed": (0, 0), "effect": "La fumée monte verticalement, pas de vent."},
