@@ -3,16 +3,16 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
 import os 
 from dotenv import load_dotenv
+import smtplib
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
 
 load_dotenv()
 
-test_key = os.getenv("TEST")
-test_key_2 = os.getenv("TEST_2")
-test_key_3 = os.getenv("TEST_3")
+# test_key = os.getenv("TEST")
 
-print(test_key)
-print(test_key_2)  
-print(test_key_3)
+# print(test_key)
+
 
 # With Selenium i can use a webdriver to read a webpage in different navigator
 
@@ -112,8 +112,20 @@ print(wind_speed, "Km/h")
 beaufort_from_speed(int(wind_speed))
 compass(wind_arrow_split[1])
 
+msg = MIMEMultipart(temperature,time_element,temp_img,wind_arrow,wind_speed, "Km/h",beaufort_from_speed(int(wind_speed)),
+compass(wind_arrow_split[1]))
+msg["Subject"] = "Test"
+msg["From"] = os.getenv("address_mail")
+msg["To"] = "zidiny.erre.fr@gmail.com"
+
+with smtplib.SMTP_SSL("smtp.gmail.com", 465) as server:
+    server.login(os.getenv("address_mail"), os.getenv("mdp_app"))
+    server.send_message(msg)
+
 
 # I need to find how i can send data to my mail
+# .env correct time to pass to send mail and after that program a way to received at 12 pm 
+#  The meteo of the evening
 
 driver.quit()
 
