@@ -7,7 +7,7 @@ and send the information we need in the terminal and you're mail adress.
 - Google Chrome
 -  GitHub account 
 
-## setup
+## Setup
 
 Clone the repository:
 ```bash
@@ -26,11 +26,13 @@ Run the script:
 python index.py
 ``` 
 
-## last information 
+## Last information 
 
 I use smtp protocol to send the mail and also gitignore and a .env file to hide
 sensitive information. 
+
 I also use app security key of my google account , that's why i stop the project because i don't like 
 to play with my mail account.
+
 All the variables appear in the terminal and in the mail but the two functions i create doesn't appear in mail part. 
 
