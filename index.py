@@ -112,20 +112,41 @@ print(wind_speed, "Km/h")
 beaufort_from_speed(int(wind_speed))
 compass(wind_arrow_split[1])
 
-msg = MIMEMultipart(temperature,time_element,temp_img,wind_arrow,wind_speed, "Km/h",beaufort_from_speed(int(wind_speed)),
-compass(wind_arrow_split[1]))
-msg["Subject"] = "Test"
+msg = MIMEMultipart("alternative")
+msg["Subject"] = "Test meteo_bot"
 msg["From"] = os.getenv("address_mail")
 msg["To"] = "zidiny.erre.fr@gmail.com"
+
+the_text = f"""
+Hello,
+
+Her you can find your meteo information here:
+"""
+
+text_part = MIMEText(the_text,"plain")
+msg.attach(text_part)
+
+html = f"""
+<html>
+    <body>
+        <p>{temperature}</p>
+        <p>{time_element}</p>
+        <p>{temp_img}</p>
+        <p>{wind_arrow}</p>
+        <p>{wind_speed}, "Km/h"</p>
+        <p>{print(beaufort_from_speed(int(wind_speed)))}</p>
+        <p>{print(compass(wind_arrow_split[1]))}</p>
+    </body>
+</html>
+"""
+html_part = MIMEText(html,"html")
+msg.attach(html_part)
 
 with smtplib.SMTP_SSL("smtp.gmail.com", 465) as server:
     server.login(os.getenv("address_mail"), os.getenv("mdp_app"))
     server.send_message(msg)
 
 
-# I need to find how i can send data to my mail
-# .env correct time to pass to send mail and after that program a way to received at 12 pm 
-#  The meteo of the evening
 
 driver.quit()
 
